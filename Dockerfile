@@ -11,4 +11,9 @@ RUN /graalvm/graalvm-ce-java11-21.3.0/bin/gu install native-image
 COPY . /app
 WORKDIR /app
 
+ENV JAVA_HOME /graalvm/graalvm-ce-java11-21.3.0
+RUN export JAVA_HOME
+
+RUN ./mvnw -Pnative clean package
+
 CMD ["sleep", "infinity"]

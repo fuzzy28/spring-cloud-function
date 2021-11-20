@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd ${LAMBDA_TASK_ROOT:-.}
+
+./spring-cloud-function -Dlogging.level.org.springframework=DEBUG

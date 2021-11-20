@@ -1,11 +1,11 @@
 package org.jrue.poc;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.function.Function;
 
-@SpringBootConfiguration
+@SpringBootApplication
 public class SpringCloudFunctionDemoApplication implements Function<String, String> {
 
     public static void main(String[] args) {

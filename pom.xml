@@ -148,11 +148,9 @@
     </pluginRepositories>
 
     <profiles>
-        <!-- Enable building a native image using a local installation of native-image with GraalVM native-image-maven-plugin -->
         <profile>
-            <id>native-image</id>
+            <id>native</id>
             <properties>
-                <!-- Avoid a clash between Spring Boot repackaging and native-image-maven-plugin -->
                 <classifier>exec</classifier>
             </properties>
             <build>

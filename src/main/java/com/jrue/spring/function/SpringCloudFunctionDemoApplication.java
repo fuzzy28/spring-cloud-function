@@ -10,6 +10,10 @@ import java.util.function.Function;
 
 @SpringBootConfiguration
 public class SpringCloudFunctionDemoApplication implements ApplicationContextInitializer<GenericApplicationContext> {
+    
+    public static void main(String[] args) {
+
+    }
 
     public Function<String, String> sayHello() {
         return name -> String.format("Hello %s", name);

@@ -4,7 +4,7 @@
     <id>native-zip</id>
     <formats>
         <format>zip</format>
-    </formats>cd D
+    </formats>
     <baseDirectory></baseDirectory>
     <fileSets>
         <fileSet>

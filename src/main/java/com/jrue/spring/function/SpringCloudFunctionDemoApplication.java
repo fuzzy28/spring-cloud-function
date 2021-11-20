@@ -10,7 +10,7 @@ import java.util.function.Function;
 
 @SpringBootConfiguration
 public class SpringCloudFunctionDemoApplication implements ApplicationContextInitializer<GenericApplicationContext> {
-    
+
     public static void main(String[] args) {
 
     }

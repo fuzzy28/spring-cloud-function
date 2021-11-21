@@ -161,7 +161,6 @@
                         <version>21.2.0</version>
                         <configuration>
                             <imageName>${project.artifactId}</imageName>
-                            <buildArgs>--initialize-at-build-time=ch.qos.logback.classic.Logger</buildArgs>
                         </configuration>
                         <executions>
                             <execution>
@@ -169,6 +168,11 @@
                                     <goal>native-image</goal>
                                 </goals>
                                 <phase>package</phase>
+                                <configuration>
+                                    <nativeImageArgs>
+                                        <nativeImageArg>--initialize-at-build-time=com.mycompany.main.internal.NativeImageStaticInitializer</nativeImageArg>
+                                    </nativeImageArgs>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>

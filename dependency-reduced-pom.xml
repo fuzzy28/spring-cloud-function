@@ -79,39 +79,48 @@
       <build>
         <plugins>
           <plugin>
-            <groupId>org.graalvm.buildtools</groupId>
-            <artifactId>native-maven-plugin</artifactId>
-            <version>${native-buildtools.version}</version>
+            <groupId>org.graalvm.nativeimage</groupId>
+            <artifactId>native-image-maven-plugin</artifactId>
+            <version>21.2.0</version>
             <executions>
               <execution>
-                <id>test-native</id>
-                <phase>test</phase>
-                <goals>
-                  <goal>test</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>build-native</id>
                 <phase>package</phase>
                 <goals>
-                  <goal>build</goal>
+                  <goal>native-image</goal>
                 </goals>
+                <configuration>
+                  <nativeImageArgs>
+                    <nativeImageArg>--initialize-at-build-time=com.mycompany.main.internal.NativeImageStaticInitializer</nativeImageArg>
+                  </nativeImageArgs>
+                </configuration>
               </execution>
             </executions>
+            <configuration>
+              <imageName>${project.artifactId}</imageName>
+            </configuration>
+          </plugin>
+          <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>native-zip</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <inherited>false</inherited>
+              </execution>
+            </executions>
+            <configuration>
+              <descriptors>
+                <descriptor>assembly.xml</descriptor>
+              </descriptors>
+            </configuration>
           </plugin>
         </plugins>
       </build>
-      <dependencies>
-        <dependency>
-          <groupId>org.graalvm.buildtools</groupId>
-          <artifactId>junit-platform-native</artifactId>
-          <version>${native-buildtools.version}</version>
-          <scope>test</scope>
-        </dependency>
-      </dependencies>
       <properties>
-        <native-buildtools.version>0.9.3</native-buildtools.version>
-        <repackage.classifier>exec</repackage.classifier>
+        <classifier>exec</classifier>
       </properties>
     </profile>
   </profiles>
